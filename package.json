@@ -7,12 +7,15 @@
   "scripts": {
     "build": "tsc",
     "start": "npm run build && ts-node dist/index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "test"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@babel/core": "^7.14.6",
+    "@babel/preset-env": "^7.14.7",
+    "babel-jest": "^27.0.6",
     "jest": "^27.0.6",
     "nodemon": "^2.0.12",
     "ts-node": "^10.1.0",
