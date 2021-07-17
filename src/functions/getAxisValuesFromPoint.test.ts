@@ -1,7 +1,7 @@
-import { getAxisValuesFromPoint } from "./getAxisValuesFromPoint";
+import { getAxisValuesFromPoint } from "functions/getAxisValuesFromPoint";
 
 describe(`The ${getAxisValuesFromPoint.name} function`, () => {
-  it("converts a Point into an array of numeric axis values.", () => {
+  it(`converts a Point into an array of numeric axis values.`, () => {
     [
       { point: [], expectedAxisValues: [] },
       { point: [{ axis: "foo", value: 0 }], expectedAxisValues: [0] },
