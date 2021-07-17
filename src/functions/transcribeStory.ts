@@ -22,14 +22,19 @@ export const transcribeStory = async (
   transcript: string = ""
 ): Promise<string> => {
   const choice = findStoryChoiceById(nextChoiceId, story) ?? story[0];
+  if (!choice) {
+    console.warn(`Unable to find choice by id: ${nextChoiceId}.`);
+    return transcript;
+  }
   const point = await onPrompt(choice.axes);
+  const updatedTranscript = transcript + choice.onRender(context);
   return choice.results.length === 0
-    ? transcript
+    ? updatedTranscript
     : transcribeStory(
         story,
         onPrompt,
         context,
         getClosestResult(point, choice.results).id,
-        transcript + choice.onRender(context)
+        updatedTranscript
       );
 };
