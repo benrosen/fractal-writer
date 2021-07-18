@@ -22,6 +22,7 @@ For more, [visit the documentation](https://benrosen.github.io/storytoy/).
 
 ```bash
 npm run build   # compile the code
+npm run docs    # generate updated documentation
 npm run start   # compile the code and then run it
 npm run test    # run all the tests
 ```
