@@ -1,3 +1,1 @@
-export { transcribeStory as default } from "./src/functions/transcribeStory";
-
-console.log("!!!");
+export { transcribeStory as tell } from "./src/functions/transcribeStory";
