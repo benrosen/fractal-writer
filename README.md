@@ -18,6 +18,100 @@ Each `Choice` leads to another `Choice` until the story ends.
 
 For more, [visit the documentation](https://benrosen.github.io/storytoy/).
 
+## Example
+
+```javascript
+const { tell } = require("storytoy");
+
+const story = [
+  {
+    axes: ["disgust", "lust", "trust"],
+    id: "link-with-odo",
+    onRender: (context) => {
+      return `"Ensign," says Odo in a gravelly voice. "Let me link with you."`;
+    },
+    results: [
+      {
+        point: [
+          { axis: "disgust", value: 0 },
+          { axis: "lust", value: 1 },
+          { axis: "trust", value: 1 },
+        ],
+        id: "link-with-odo-passionately",
+      },
+      {
+        point: [
+          { axis: "disgust", value: 1 },
+          { axis: "lust", value: 0 },
+          { axis: "trust", value: 1 },
+        ],
+        id: "link-with-odo-dutifully",
+      },
+      {
+        point: [
+          { axis: "disgust", value: 1 },
+          { axis: "lust", value: 1 },
+          { axis: "trust", value: 0 },
+        ],
+        id: "link-with-odo-inquisitively",
+      },
+      {
+        point: [
+          { axis: "disgust", value: 1 },
+          { axis: "lust", value: 0 },
+          { axis: "trust", value: 0 },
+        ],
+        id: "offend-odo",
+      },
+    ],
+  },
+  {
+    axes: [],
+    id: "link-with-odo-passionately",
+    onRender: (context) => {
+      return "No longer afraid of expressing your innermost desires, you throw yourself into Odo's waiting arms and become one with the Great Link.";
+    },
+    results: [],
+  },
+  {
+    axes: [],
+    id: "link-with-odo-dutifully",
+    onRender: (context) => {
+      return `You sigh and shake your head. A wry smile flickers across your face. Being a Starfleet officer certainly comes with its fair share of adventures. You take Odo's hand and prepare to join the Great Link.`;
+    },
+    results: [],
+  },
+  {
+    axes: [],
+    id: "link-with-odo-inquisitively",
+    onRender: (context) => {
+      return `The next few hours are a blur. You don't remember much, and you're not sure you ever want to.`;
+    },
+    results: [],
+  },
+  {
+    axes: [],
+    id: "game-over",
+    onRender: (context) => {
+      return `You recoil in disgust and slap Odo's gooey hand away. "${context.player.name}," says Odo. "...how could you?" Odo's feelings are clearly hurt.`;
+    },
+    results: [],
+  },
+];
+
+tell(
+  story,
+  async (axes) => [
+    { axis: axes[0], value: 1 },
+    { axis: axes[1], value: 0 },
+    { axis: axes[2], value: 1 },
+  ],
+  { player: { name: "Quark" } }
+)
+  .then((transcript) => console.log(transcript))
+  .catch((error) => console.error(error));
+```
+
 ## Scripts
 
 ```bash
