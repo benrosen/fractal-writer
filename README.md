@@ -16,6 +16,8 @@ At its core, `storytoy` is a recursive function that operates on a `Story`.
 
 Each `Choice` leads to another `Choice` until the story ends.
 
+For more, [visit the documentation](https://benrosen.github.io/storytoy/).
+
 ## Scripts
 
 ```bash
