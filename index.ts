@@ -1,3 +1,3 @@
-export { transcribeStory as default } from "functions/transcribeStory";
+export { transcribeStory as default } from "./src/functions/transcribeStory";
 
 console.log("!!!");

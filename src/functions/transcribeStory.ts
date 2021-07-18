@@ -1,7 +1,7 @@
 import { Point } from "types/Point";
 import { Story } from "types/Story";
-import { findStoryChoiceById } from "functions/findStoryChoiceById";
-import { getClosestResult } from "functions/getClosestResult";
+import { findStoryChoiceById } from "./findStoryChoiceById";
+import { getClosestResult } from "./getClosestResult";
 
 /**
  * Render a {@link Story} to text, prompting the user for their reactions along the way and adjusting course accordingly.

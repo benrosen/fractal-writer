@@ -1,7 +1,7 @@
 import { Point } from "types/Point";
 import { Result } from "types/Result";
 import distance from "euclidean-distance";
-import { getAxisValuesFromPoint } from "functions/getAxisValuesFromPoint";
+import { getAxisValuesFromPoint } from "./getAxisValuesFromPoint";
 
 /**
  * Finds the {@link Result} with the lowest distance to the given {@link Point}.
