@@ -13,6 +13,12 @@ export const findStoryChoiceById = (
   choiceId: string,
   story: Story
 ): Choice | undefined => {
+  if (story.length === 0) {
+    throw "This Story doesn't have any Choice objects.";
+  }
+  if (!choiceId) {
+    return story[0];
+  }
   return story.find((choice) => {
     return choice.id === choiceId;
   });

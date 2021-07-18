@@ -1,5 +1,6 @@
 import { Choice } from "types/Choice";
 import { findStoryChoiceById } from "functions/findStoryChoiceById";
+import { transcribeStory } from "./transcribeStory";
 
 const foo: Choice = { axes: [], id: "foo", results: [], onRender: () => "" };
 const bar: Choice = { axes: [], id: "bar", results: [], onRender: () => "" };
@@ -16,11 +17,19 @@ describe(`The ${findStoryChoiceById.name} function`, () => {
       expect(choice).toStrictEqual(expectedChoice);
     });
   });
-  it("returns `undefined` if no matching {@link Choice} can be found.", () => {
+  it("throws an error if the Story contains no Choice objects.", () => {
+    expect(() => {
+      findStoryChoiceById("foo", []);
+    }).toThrow();
+  });
+  it("returns the first Choice in the Story if no choiceId is provided.", () => {
+    const choice = findStoryChoiceById("", [foo, bar]);
+    expect(choice).toBe(foo);
+  });
+  it("returns `undefined` if no matching Choice can be found.", () => {
     [
-      { id: "", story: [] },
-      { id: "foo", story: [] },
-      { id: "bar", story: [foo] },
+      { id: "foo", story: [bar] },
+      { id: "foo", story: [bar, baz] },
     ].forEach(({ id, story }) => {
       const choice = findStoryChoiceById(id, story);
       expect(choice).toBeUndefined();
