@@ -1,7 +1,7 @@
 {
-  "name": "fractal-writer",
-  "version": "1.0.0",
-  "description": "",
+  "name": "storytoy",
+  "version": "0.1.0",
+  "description": "A framework for interactive storytelling applications.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
