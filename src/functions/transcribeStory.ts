@@ -21,20 +21,14 @@ export const transcribeStory = async (
   nextChoiceId: string = "",
   transcript: string = ""
 ): Promise<string> => {
-  const choice = findStoryChoiceById(nextChoiceId, story) ?? story[0];
+  const choice = findStoryChoiceById(nextChoiceId, story);
   if (!choice) {
-    console.warn(`Unable to find choice by id: ${nextChoiceId}.`);
     return transcript;
   }
   const point = await onPrompt(choice.axes);
-  const updatedTranscript = transcript + choice.onRender(context);
-  return choice.results.length === 0
-    ? updatedTranscript
-    : transcribeStory(
-        story,
-        onPrompt,
-        context,
-        getClosestResult(point, choice.results).id,
-        updatedTranscript
-      );
+  transcript += choice.onRender(context) + " ";
+  nextChoiceId = getClosestResult(point, choice.results)?.id;
+  return nextChoiceId
+    ? transcribeStory(story, onPrompt, context, nextChoiceId, transcript)
+    : transcript;
 };
