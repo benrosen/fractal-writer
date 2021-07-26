@@ -80,6 +80,9 @@
 						<a href="modules/functions_transcribeStory.html">functions/transcribeStory</a>
 					</li>
 					<li class=" tsd-kind-module">
+						<a href="modules/types.html">types</a>
+					</li>
+					<li class=" tsd-kind-module">
 						<a href="modules/types_Choice.html">types/Choice</a>
 					</li>
 					<li class=" tsd-kind-module">
@@ -117,6 +120,99 @@
 				<p><code>Choice</code> objects tell <code>storytoy</code> what to show to the reader and how to prompt the reader for feedback. Reader feedback helps <code>storytoy</code> determine which <code>Choice</code> to show next.</p>
 				<p>Each <code>Choice</code> leads to another <code>Choice</code> until the story ends.</p>
 				<p>For more, <a href="https://benrosen.github.io/storytoy/">visit the documentation</a>.</p>
+				<a href="#example" id="example" style="color: inherit; text-decoration: none;">
+					<h2>Example</h2>
+				</a>
+				<pre><code class="language-javascript"><span style="color: #0000FF">const</span><span style="color: #000000"> { </span><span style="color: #0070C1">tell</span><span style="color: #000000"> } = </span><span style="color: #795E26">require</span><span style="color: #000000">(</span><span style="color: #A31515">&quot;storytoy&quot;</span><span style="color: #000000">);</span>
+
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">story</span><span style="color: #000000"> = [</span>
+<span style="color: #000000">  {</span>
+<span style="color: #000000">    </span><span style="color: #001080">axes:</span><span style="color: #000000"> [</span><span style="color: #A31515">&quot;disgust&quot;</span><span style="color: #000000">, </span><span style="color: #A31515">&quot;lust&quot;</span><span style="color: #000000">, </span><span style="color: #A31515">&quot;trust&quot;</span><span style="color: #000000">],</span>
+<span style="color: #000000">    </span><span style="color: #001080">id:</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;link-with-odo&quot;</span><span style="color: #000000">,</span>
+<span style="color: #000000">    </span><span style="color: #795E26">onRender</span><span style="color: #001080">:</span><span style="color: #000000"> (</span><span style="color: #001080">context</span><span style="color: #000000">) </span><span style="color: #0000FF">=&gt;</span><span style="color: #000000"> {</span>
+<span style="color: #000000">      </span><span style="color: #AF00DB">return</span><span style="color: #000000"> </span><span style="color: #A31515">`&quot;Ensign,&quot; says Odo in a gravelly voice. &quot;Let me link with you.&quot;`</span><span style="color: #000000">;</span>
+<span style="color: #000000">    },</span>
+<span style="color: #000000">    </span><span style="color: #001080">results:</span><span style="color: #000000"> [</span>
+<span style="color: #000000">      {</span>
+<span style="color: #000000">        </span><span style="color: #001080">point:</span><span style="color: #000000"> [</span>
+<span style="color: #000000">          { </span><span style="color: #001080">axis:</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;disgust&quot;</span><span style="color: #000000">, </span><span style="color: #001080">value:</span><span style="color: #000000"> </span><span style="color: #098658">0</span><span style="color: #000000"> },</span>
+<span style="color: #000000">          { </span><span style="color: #001080">axis:</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;lust&quot;</span><span style="color: #000000">, </span><span style="color: #001080">value:</span><span style="color: #000000"> </span><span style="color: #098658">1</span><span style="color: #000000"> },</span>
+<span style="color: #000000">          { </span><span style="color: #001080">axis:</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;trust&quot;</span><span style="color: #000000">, </span><span style="color: #001080">value:</span><span style="color: #000000"> </span><span style="color: #098658">1</span><span style="color: #000000"> },</span>
+<span style="color: #000000">        ],</span>
+<span style="color: #000000">        </span><span style="color: #001080">id:</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;link-with-odo-passionately&quot;</span><span style="color: #000000">,</span>
+<span style="color: #000000">      },</span>
+<span style="color: #000000">      {</span>
+<span style="color: #000000">        </span><span style="color: #001080">point:</span><span style="color: #000000"> [</span>
+<span style="color: #000000">          { </span><span style="color: #001080">axis:</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;disgust&quot;</span><span style="color: #000000">, </span><span style="color: #001080">value:</span><span style="color: #000000"> </span><span style="color: #098658">1</span><span style="color: #000000"> },</span>
+<span style="color: #000000">          { </span><span style="color: #001080">axis:</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;lust&quot;</span><span style="color: #000000">, </span><span style="color: #001080">value:</span><span style="color: #000000"> </span><span style="color: #098658">0</span><span style="color: #000000"> },</span>
+<span style="color: #000000">          { </span><span style="color: #001080">axis:</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;trust&quot;</span><span style="color: #000000">, </span><span style="color: #001080">value:</span><span style="color: #000000"> </span><span style="color: #098658">1</span><span style="color: #000000"> },</span>
+<span style="color: #000000">        ],</span>
+<span style="color: #000000">        </span><span style="color: #001080">id:</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;link-with-odo-dutifully&quot;</span><span style="color: #000000">,</span>
+<span style="color: #000000">      },</span>
+<span style="color: #000000">      {</span>
+<span style="color: #000000">        </span><span style="color: #001080">point:</span><span style="color: #000000"> [</span>
+<span style="color: #000000">          { </span><span style="color: #001080">axis:</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;disgust&quot;</span><span style="color: #000000">, </span><span style="color: #001080">value:</span><span style="color: #000000"> </span><span style="color: #098658">1</span><span style="color: #000000"> },</span>
+<span style="color: #000000">          { </span><span style="color: #001080">axis:</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;lust&quot;</span><span style="color: #000000">, </span><span style="color: #001080">value:</span><span style="color: #000000"> </span><span style="color: #098658">1</span><span style="color: #000000"> },</span>
+<span style="color: #000000">          { </span><span style="color: #001080">axis:</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;trust&quot;</span><span style="color: #000000">, </span><span style="color: #001080">value:</span><span style="color: #000000"> </span><span style="color: #098658">0</span><span style="color: #000000"> },</span>
+<span style="color: #000000">        ],</span>
+<span style="color: #000000">        </span><span style="color: #001080">id:</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;link-with-odo-inquisitively&quot;</span><span style="color: #000000">,</span>
+<span style="color: #000000">      },</span>
+<span style="color: #000000">      {</span>
+<span style="color: #000000">        </span><span style="color: #001080">point:</span><span style="color: #000000"> [</span>
+<span style="color: #000000">          { </span><span style="color: #001080">axis:</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;disgust&quot;</span><span style="color: #000000">, </span><span style="color: #001080">value:</span><span style="color: #000000"> </span><span style="color: #098658">1</span><span style="color: #000000"> },</span>
+<span style="color: #000000">          { </span><span style="color: #001080">axis:</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;lust&quot;</span><span style="color: #000000">, </span><span style="color: #001080">value:</span><span style="color: #000000"> </span><span style="color: #098658">0</span><span style="color: #000000"> },</span>
+<span style="color: #000000">          { </span><span style="color: #001080">axis:</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;trust&quot;</span><span style="color: #000000">, </span><span style="color: #001080">value:</span><span style="color: #000000"> </span><span style="color: #098658">0</span><span style="color: #000000"> },</span>
+<span style="color: #000000">        ],</span>
+<span style="color: #000000">        </span><span style="color: #001080">id:</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;offend-odo&quot;</span><span style="color: #000000">,</span>
+<span style="color: #000000">      },</span>
+<span style="color: #000000">    ],</span>
+<span style="color: #000000">  },</span>
+<span style="color: #000000">  {</span>
+<span style="color: #000000">    </span><span style="color: #001080">axes:</span><span style="color: #000000"> [],</span>
+<span style="color: #000000">    </span><span style="color: #001080">id:</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;link-with-odo-passionately&quot;</span><span style="color: #000000">,</span>
+<span style="color: #000000">    </span><span style="color: #795E26">onRender</span><span style="color: #001080">:</span><span style="color: #000000"> (</span><span style="color: #001080">context</span><span style="color: #000000">) </span><span style="color: #0000FF">=&gt;</span><span style="color: #000000"> {</span>
+<span style="color: #000000">      </span><span style="color: #AF00DB">return</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;No longer afraid of expressing your innermost desires, you throw yourself into Odo&#039;s waiting arms and become one with the Great Link.&quot;</span><span style="color: #000000">;</span>
+<span style="color: #000000">    },</span>
+<span style="color: #000000">    </span><span style="color: #001080">results:</span><span style="color: #000000"> [],</span>
+<span style="color: #000000">  },</span>
+<span style="color: #000000">  {</span>
+<span style="color: #000000">    </span><span style="color: #001080">axes:</span><span style="color: #000000"> [],</span>
+<span style="color: #000000">    </span><span style="color: #001080">id:</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;link-with-odo-dutifully&quot;</span><span style="color: #000000">,</span>
+<span style="color: #000000">    </span><span style="color: #795E26">onRender</span><span style="color: #001080">:</span><span style="color: #000000"> (</span><span style="color: #001080">context</span><span style="color: #000000">) </span><span style="color: #0000FF">=&gt;</span><span style="color: #000000"> {</span>
+<span style="color: #000000">      </span><span style="color: #AF00DB">return</span><span style="color: #000000"> </span><span style="color: #A31515">`You sigh and shake your head. A wry smile flickers across your face. Being a Starfleet officer certainly comes with its fair share of adventures. You take Odo&#039;s hand and prepare to join the Great Link.`</span><span style="color: #000000">;</span>
+<span style="color: #000000">    },</span>
+<span style="color: #000000">    </span><span style="color: #001080">results:</span><span style="color: #000000"> [],</span>
+<span style="color: #000000">  },</span>
+<span style="color: #000000">  {</span>
+<span style="color: #000000">    </span><span style="color: #001080">axes:</span><span style="color: #000000"> [],</span>
+<span style="color: #000000">    </span><span style="color: #001080">id:</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;link-with-odo-inquisitively&quot;</span><span style="color: #000000">,</span>
+<span style="color: #000000">    </span><span style="color: #795E26">onRender</span><span style="color: #001080">:</span><span style="color: #000000"> (</span><span style="color: #001080">context</span><span style="color: #000000">) </span><span style="color: #0000FF">=&gt;</span><span style="color: #000000"> {</span>
+<span style="color: #000000">      </span><span style="color: #AF00DB">return</span><span style="color: #000000"> </span><span style="color: #A31515">`The next few hours are a blur. You don&#039;t remember much, and you&#039;re not sure you ever want to.`</span><span style="color: #000000">;</span>
+<span style="color: #000000">    },</span>
+<span style="color: #000000">    </span><span style="color: #001080">results:</span><span style="color: #000000"> [],</span>
+<span style="color: #000000">  },</span>
+<span style="color: #000000">  {</span>
+<span style="color: #000000">    </span><span style="color: #001080">axes:</span><span style="color: #000000"> [],</span>
+<span style="color: #000000">    </span><span style="color: #001080">id:</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;game-over&quot;</span><span style="color: #000000">,</span>
+<span style="color: #000000">    </span><span style="color: #795E26">onRender</span><span style="color: #001080">:</span><span style="color: #000000"> (</span><span style="color: #001080">context</span><span style="color: #000000">) </span><span style="color: #0000FF">=&gt;</span><span style="color: #000000"> {</span>
+<span style="color: #000000">      </span><span style="color: #AF00DB">return</span><span style="color: #000000"> </span><span style="color: #A31515">`You recoil in disgust and slap Odo&#039;s gooey hand away. &quot;</span><span style="color: #0000FF">${</span><span style="color: #001080">context</span><span style="color: #000000FF">.</span><span style="color: #001080">player</span><span style="color: #000000FF">.</span><span style="color: #001080">name</span><span style="color: #0000FF">}</span><span style="color: #A31515">,&quot; says Odo. &quot;...how could you?&quot; Odo&#039;s feelings are clearly hurt.`</span><span style="color: #000000">;</span>
+<span style="color: #000000">    },</span>
+<span style="color: #000000">    </span><span style="color: #001080">results:</span><span style="color: #000000"> [],</span>
+<span style="color: #000000">  },</span>
+<span style="color: #000000">];</span>
+
+<span style="color: #795E26">tell</span><span style="color: #000000">(</span>
+<span style="color: #000000">  </span><span style="color: #001080">story</span><span style="color: #000000">,</span>
+<span style="color: #000000">  </span><span style="color: #0000FF">async</span><span style="color: #000000"> (</span><span style="color: #001080">axes</span><span style="color: #000000">) </span><span style="color: #0000FF">=&gt;</span><span style="color: #000000"> [</span>
+<span style="color: #000000">    { </span><span style="color: #001080">axis:</span><span style="color: #000000"> </span><span style="color: #001080">axes</span><span style="color: #000000">[</span><span style="color: #098658">0</span><span style="color: #000000">], </span><span style="color: #001080">value:</span><span style="color: #000000"> </span><span style="color: #098658">1</span><span style="color: #000000"> },</span>
+<span style="color: #000000">    { </span><span style="color: #001080">axis:</span><span style="color: #000000"> </span><span style="color: #001080">axes</span><span style="color: #000000">[</span><span style="color: #098658">1</span><span style="color: #000000">], </span><span style="color: #001080">value:</span><span style="color: #000000"> </span><span style="color: #098658">0</span><span style="color: #000000"> },</span>
+<span style="color: #000000">    { </span><span style="color: #001080">axis:</span><span style="color: #000000"> </span><span style="color: #001080">axes</span><span style="color: #000000">[</span><span style="color: #098658">2</span><span style="color: #000000">], </span><span style="color: #001080">value:</span><span style="color: #000000"> </span><span style="color: #098658">1</span><span style="color: #000000"> },</span>
+<span style="color: #000000">  ],</span>
+<span style="color: #000000">  { </span><span style="color: #001080">player:</span><span style="color: #000000"> { </span><span style="color: #001080">name:</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;Quark&quot;</span><span style="color: #000000"> } }</span>
+<span style="color: #000000">)</span>
+<span style="color: #000000">  .</span><span style="color: #795E26">then</span><span style="color: #000000">((</span><span style="color: #001080">transcript</span><span style="color: #000000">) </span><span style="color: #0000FF">=&gt;</span><span style="color: #000000"> </span><span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #001080">transcript</span><span style="color: #000000">))</span>
+<span style="color: #000000">  .</span><span style="color: #795E26">catch</span><span style="color: #000000">((</span><span style="color: #001080">error</span><span style="color: #000000">) </span><span style="color: #0000FF">=&gt;</span><span style="color: #000000"> </span><span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">error</span><span style="color: #000000">(</span><span style="color: #001080">error</span><span style="color: #000000">));</span>
+</code></pre>
 				<a href="#scripts" id="scripts" style="color: inherit; text-decoration: none;">
 					<h2>Scripts</h2>
 				</a>
