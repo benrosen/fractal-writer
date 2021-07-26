@@ -1,6 +1,6 @@
 {
   "name": "storytoy",
-  "version": "0.2.2",
+  "version": "0.3.0",
   "description": "A framework for interactive storytelling applications.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
