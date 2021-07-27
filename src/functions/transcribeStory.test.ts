@@ -81,18 +81,21 @@ const story: Story = [
 
 describe(`The ${transcribeStory.name} function`, () => {
   it("renders a Story to text", () => {
-    return transcribeStory(story, async (axes: string[]) => {
-      return [
-        { axis: axes[0], value: 1 },
-        { axis: axes[1], value: 0 },
-        { axis: axes[2], value: 1 },
-      ];
-    }).then((transcription) => {
+    return transcribeStory(
+      story,
+      async (axes: string[], transcript: string) => {
+        return [
+          { axis: axes[0], value: 1 },
+          { axis: axes[1], value: 0 },
+          { axis: axes[2], value: 1 },
+        ];
+      }
+    ).then((transcription) => {
       expect(transcription).toBeDefined();
     });
   });
   it("invokes a callback function.", () => {
-    const callback = jest.fn(async (axes: string[]) => {
+    const callback = jest.fn(async (axes: string[], transcript: string) => {
       return [];
     });
     return transcribeStory(story, callback).then(() => {
@@ -102,7 +105,7 @@ describe(`The ${transcribeStory.name} function`, () => {
   it("uses a context object to modify the story.", () => {
     return transcribeStory(
       story,
-      async (axes: string[]) => [
+      async (axes: string[], transcript: string) => [
         { axis: axes[0], value: 1 },
         { axis: axes[1], value: 0 },
         { axis: axes[2], value: 0 },
