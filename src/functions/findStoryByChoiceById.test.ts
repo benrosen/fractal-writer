@@ -1,6 +1,5 @@
 import { Choice } from "types/Choice";
 import { findStoryChoiceById } from "functions/findStoryChoiceById";
-import { transcribeStory } from "./transcribeStory";
 
 const foo: Choice = { axes: [], id: "foo", results: [], onRender: () => "" };
 const bar: Choice = { axes: [], id: "bar", results: [], onRender: () => "" };
